@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LocalHost.GestionDesProduits"
+  DTS:DTSID="{1B4947C2-1A4E-486F-887C-C1ACFDA342D4}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=.;Initial Catalog=GestionDesProduits;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Build BI Project SSIS-{1B4947C2-1A4E-486F-887C-C1ACFDA342D4}LocalHost.GestionDesProduits;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
