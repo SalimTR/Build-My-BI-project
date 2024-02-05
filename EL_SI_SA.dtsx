@@ -11,27 +11,390 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="SI_SA"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{22567A3D-5E4A-4B14-B67F-45B2C6020D5B}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{C5E1E00D-9E3E-422D-B627-CD57084065E9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\Data Flow Task"
+      DTS:refId="Package\Famille"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{E6335D78-72A8-4D49-8D1E-581A50A8FF1A}"
+      DTS:DTSID="{7036F7B5-237C-4ABC-9C04-319ED9769430}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Data Flow Task">
+      DTS:ObjectName="Famille"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
           version="1">
           <components>
             <component
-              refId="Package\Data Flow Task\Produit SRC"
+              refId="Package\Famille\Famille Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Famille Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Famille]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+ISNULL([Famille_ID],-1) AS [Famille_ID],
+ISNULL([Nom], 'Undifined') AS [Nom],
+ISNULL([Code], 'Undifiend') AS Code,
+ISNULL ([Description] , 'Undifined') AS [Description]
+FROM [dbo].[Famille]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Famille\Famille Source.Connections[OleDbConnection]"
+                  connectionManagerID="{1B4947C2-1A4E-486F-887C-C1ACFDA342D4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.GestionDesProduits]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Famille\Famille Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].Columns[Famille_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].ExternalColumns[Famille_ID]"
+                      lineageId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].Columns[Famille_ID]"
+                      name="Famille_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].Columns[Nom]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].ExternalColumns[Nom]"
+                      length="50"
+                      lineageId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].Columns[Nom]"
+                      name="Nom"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].Columns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      length="10"
+                      lineageId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].Columns[Code]"
+                      name="Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].Columns[Description]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      length="50"
+                      lineageId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].Columns[Description]"
+                      name="Description"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].ExternalColumns[Famille_ID]"
+                      dataType="i4"
+                      name="Famille_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].ExternalColumns[Nom]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Nom" />
+                    <externalMetadataColumn
+                      refId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Description" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Famille\Famille Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Famille\Famille Source.Outputs[OLE DB Source Error Output].Columns[Famille_ID]"
+                      dataType="i4"
+                      lineageId="Package\Famille\Famille Source.Outputs[OLE DB Source Error Output].Columns[Famille_ID]"
+                      name="Famille_ID" />
+                    <outputColumn
+                      refId="Package\Famille\Famille Source.Outputs[OLE DB Source Error Output].Columns[Nom]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Famille\Famille Source.Outputs[OLE DB Source Error Output].Columns[Nom]"
+                      name="Nom" />
+                    <outputColumn
+                      refId="Package\Famille\Famille Source.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Famille\Famille Source.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      name="Code" />
+                    <outputColumn
+                      refId="Package\Famille\Famille Source.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Famille\Famille Source.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      name="Description" />
+                    <outputColumn
+                      refId="Package\Famille\Famille Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Famille\Famille Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Famille\Famille Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Famille\Famille Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Famille\Famille STG"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Famille STG"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[Familles_SA]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Famille\Famille STG.Connections[OleDbConnection]"
+                  connectionManagerID="{9B12F089-9160-4768-88CC-35518E962447}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.SA_Ventes]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Famille\Famille STG.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Famille\Famille STG.Inputs[OLE DB Destination Input].Columns[Famille_ID]"
+                      cachedDataType="i4"
+                      cachedName="Famille_ID"
+                      externalMetadataColumnId="Package\Famille\Famille STG.Inputs[OLE DB Destination Input].ExternalColumns[Famille_ID]"
+                      lineageId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].Columns[Famille_ID]" />
+                    <inputColumn
+                      refId="Package\Famille\Famille STG.Inputs[OLE DB Destination Input].Columns[Nom]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Nom"
+                      externalMetadataColumnId="Package\Famille\Famille STG.Inputs[OLE DB Destination Input].ExternalColumns[Nom]"
+                      lineageId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].Columns[Nom]" />
+                    <inputColumn
+                      refId="Package\Famille\Famille STG.Inputs[OLE DB Destination Input].Columns[Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Code"
+                      externalMetadataColumnId="Package\Famille\Famille STG.Inputs[OLE DB Destination Input].ExternalColumns[Code]"
+                      lineageId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].Columns[Code]" />
+                    <inputColumn
+                      refId="Package\Famille\Famille STG.Inputs[OLE DB Destination Input].Columns[Description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Description"
+                      externalMetadataColumnId="Package\Famille\Famille STG.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      lineageId="Package\Famille\Famille Source.Outputs[OLE DB Source Output].Columns[Description]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Famille\Famille STG.Inputs[OLE DB Destination Input].ExternalColumns[Famille_ID]"
+                      dataType="i4"
+                      name="Famille_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Famille\Famille STG.Inputs[OLE DB Destination Input].ExternalColumns[Nom]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Nom" />
+                    <externalMetadataColumn
+                      refId="Package\Famille\Famille STG.Inputs[OLE DB Destination Input].ExternalColumns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\Famille\Famille STG.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Description" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Famille\Famille STG.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Famille\Famille STG.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Famille\Famille STG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Famille\Famille STG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Famille\Famille STG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Famille\Famille STG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Famille.Paths[OLE DB Source Output]"
+              endId="Package\Famille\Famille STG.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Famille\Famille Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Produit"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E6335D78-72A8-4D49-8D1E-581A50A8FF1A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Produit">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Produit\Produit SRC"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
@@ -55,7 +418,18 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+ISNULL([Produit_ID], -1) AS [Produit_ID],
+ISNULL([Nom], 'Undefined') AS [Nom],
+ISNULL([Code], 'Undefined') AS [Code],
+ISNULL([SousFamille_ID], -1) AS [SousFamille_ID],
+ISNULL([Description], 'Undefined') AS [Description],
+ISNULL([Couleur], 'Undefined') AS [Couleur],
+ISNULL([Poids], -1) AS [Poids],
+ISNULL([CoutPMP], -1) AS [CoutPMP],
+ISNULL([DernierPrixAchat], -1) AS [DernierPrixAchat],
+ISNULL([FournisseurCode], 'Undefined') AS [FournisseurCode]
+FROM [dbo].[Produit]</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -72,7 +446,7 @@
                   dataType="System.Int32"
                   description="Specifies the mode used to access the database."
                   name="AccessMode"
-                  typeConverter="AccessMode">0</property>
+                  typeConverter="AccessMode">2</property>
                 <property
                   dataType="System.String"
                   description="The mappings between the parameters in the SQL command and variables."
@@ -80,7 +454,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Produit SRC.Connections[OleDbConnection]"
+                  refId="Package\Produit\Produit SRC.Connections[OleDbConnection]"
                   connectionManagerID="{1B4947C2-1A4E-486F-887C-C1ACFDA342D4}:external"
                   connectionManagerRefId="Project.ConnectionManagers[LocalHost.GestionDesProduits]"
                   description="The OLE DB runtime connection used to access the database."
@@ -88,166 +462,166 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output]"
+                  refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[Produit_ID]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[Produit_ID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Produit_ID]"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[Produit_ID]"
+                      externalMetadataColumnId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Produit_ID]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[Produit_ID]"
                       name="Produit_ID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[Nom]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[Nom]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Nom]"
+                      externalMetadataColumnId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Nom]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[Nom]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[Nom]"
                       name="Nom"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[Code]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[Code]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      externalMetadataColumnId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Code]"
                       length="10"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[Code]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[Code]"
                       name="Code"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[SousFamille_ID]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[SousFamille_ID]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[SousFamille_ID]"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[SousFamille_ID]"
+                      externalMetadataColumnId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[SousFamille_ID]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[SousFamille_ID]"
                       name="SousFamille_ID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[Description]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[Description]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      externalMetadataColumnId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Description]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[Description]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[Description]"
                       name="Description"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[Couleur]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[Couleur]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Couleur]"
+                      externalMetadataColumnId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Couleur]"
                       length="50"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[Couleur]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[Couleur]"
                       name="Couleur"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[Poids]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[Poids]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Poids]"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[Poids]"
+                      externalMetadataColumnId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Poids]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[Poids]"
                       name="Poids"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[CoutPMP]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[CoutPMP]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[CoutPMP]"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[CoutPMP]"
+                      externalMetadataColumnId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[CoutPMP]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[CoutPMP]"
                       name="CoutPMP"
                       precision="9"
                       scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[DernierPrixAchat]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[DernierPrixAchat]"
                       dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[DernierPrixAchat]"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[DernierPrixAchat]"
+                      externalMetadataColumnId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[DernierPrixAchat]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[DernierPrixAchat]"
                       name="DernierPrixAchat"
                       precision="9"
                       scale="2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[FournisseurCode]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[FournisseurCode]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[FournisseurCode]"
+                      externalMetadataColumnId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[FournisseurCode]"
                       length="10"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[FournisseurCode]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[FournisseurCode]"
                       name="FournisseurCode"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Produit_ID]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Produit_ID]"
                       dataType="i4"
                       name="Produit_ID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Nom]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Nom]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Nom" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Code]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="Code" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[SousFamille_ID]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[SousFamille_ID]"
                       dataType="i4"
                       name="SousFamille_ID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Description]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Description" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Couleur]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Couleur]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Couleur" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Poids]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[Poids]"
                       dataType="i4"
                       name="Poids" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[CoutPMP]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[CoutPMP]"
                       dataType="numeric"
                       name="CoutPMP"
                       precision="9"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[DernierPrixAchat]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[DernierPrixAchat]"
                       dataType="numeric"
                       name="DernierPrixAchat"
                       precision="9"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[FournisseurCode]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].ExternalColumns[FournisseurCode]"
                       codePage="1252"
                       dataType="str"
                       length="10"
@@ -255,84 +629,84 @@
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Produit_ID]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Produit_ID]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Produit_ID]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Produit_ID]"
                       name="Produit_ID" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Nom]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Nom]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Nom]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Nom]"
                       name="Nom" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Code]"
                       codePage="1252"
                       dataType="str"
                       length="10"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Code]"
                       name="Code" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[SousFamille_ID]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[SousFamille_ID]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[SousFamille_ID]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[SousFamille_ID]"
                       name="SousFamille_ID" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Description]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Description]"
                       name="Description" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Couleur]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Couleur]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Couleur]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Couleur]"
                       name="Couleur" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Poids]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Poids]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Poids]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[Poids]"
                       name="Poids" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[CoutPMP]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[CoutPMP]"
                       dataType="numeric"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[CoutPMP]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[CoutPMP]"
                       name="CoutPMP"
                       precision="9"
                       scale="2" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[DernierPrixAchat]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[DernierPrixAchat]"
                       dataType="numeric"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[DernierPrixAchat]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[DernierPrixAchat]"
                       name="DernierPrixAchat"
                       precision="9"
                       scale="2" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[FournisseurCode]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[FournisseurCode]"
                       codePage="1252"
                       dataType="str"
                       length="10"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[FournisseurCode]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[FournisseurCode]"
                       name="FournisseurCode" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -341,7 +715,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Data Flow Task\Produit STG"
+              refId="Package\Produit\Produit STG"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -398,7 +772,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Data Flow Task\Produit STG.Connections[OleDbConnection]"
+                  refId="Package\Produit\Produit STG.Connections[OleDbConnection]"
                   connectionManagerID="{9B12F089-9160-4768-88CC-35518E962447}:external"
                   connectionManagerRefId="Project.ConnectionManagers[LocalHost.SA_Ventes]"
                   description="The OLE DB runtime connection used to access the database."
@@ -406,139 +780,139 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input]"
+                  refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].Columns[Produit_ID]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].Columns[Produit_ID]"
                       cachedDataType="i4"
                       cachedName="Produit_ID"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Produit_ID]"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[Produit_ID]" />
+                      externalMetadataColumnId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Produit_ID]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[Produit_ID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].Columns[Nom]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].Columns[Nom]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Nom"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Nom]"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[Nom]" />
+                      externalMetadataColumnId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Nom]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[Nom]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].Columns[Code]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].Columns[Code]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="Code"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Code]"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[Code]" />
+                      externalMetadataColumnId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Code]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[Code]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].Columns[SousFamille_ID]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].Columns[SousFamille_ID]"
                       cachedDataType="i4"
                       cachedName="SousFamille_ID"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[SousFamille_ID]"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[SousFamille_ID]" />
+                      externalMetadataColumnId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[SousFamille_ID]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[SousFamille_ID]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].Columns[Description]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].Columns[Description]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Description"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[Description]" />
+                      externalMetadataColumnId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[Description]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].Columns[Couleur]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].Columns[Couleur]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Couleur"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Couleur]"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[Couleur]" />
+                      externalMetadataColumnId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Couleur]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[Couleur]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].Columns[Poids]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].Columns[Poids]"
                       cachedDataType="i4"
                       cachedName="Poids"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Poids]"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[Poids]" />
+                      externalMetadataColumnId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Poids]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[Poids]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].Columns[CoutPMP]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].Columns[CoutPMP]"
                       cachedDataType="numeric"
                       cachedName="CoutPMP"
                       cachedPrecision="9"
                       cachedScale="2"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[CoutPMP]"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[CoutPMP]" />
+                      externalMetadataColumnId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[CoutPMP]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[CoutPMP]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].Columns[DernierPrixAchat]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].Columns[DernierPrixAchat]"
                       cachedDataType="numeric"
                       cachedName="DernierPrixAchat"
                       cachedPrecision="9"
                       cachedScale="2"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[DernierPrixAchat]"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[DernierPrixAchat]" />
+                      externalMetadataColumnId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[DernierPrixAchat]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[DernierPrixAchat]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].Columns[FournisseurCode]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].Columns[FournisseurCode]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="FournisseurCode"
-                      externalMetadataColumnId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[FournisseurCode]"
-                      lineageId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output].Columns[FournisseurCode]" />
+                      externalMetadataColumnId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[FournisseurCode]"
+                      lineageId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output].Columns[FournisseurCode]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Produit_ID]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Produit_ID]"
                       dataType="i4"
                       name="Produit_ID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Nom]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Nom]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Nom" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Code]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Code]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="Code" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[SousFamille_ID]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[SousFamille_ID]"
                       dataType="i4"
                       name="SousFamille_ID" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Description" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Couleur]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Couleur]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Couleur" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Poids]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[Poids]"
                       dataType="i4"
                       name="Poids" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[CoutPMP]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[CoutPMP]"
                       dataType="numeric"
                       name="CoutPMP"
                       precision="9"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[DernierPrixAchat]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[DernierPrixAchat]"
                       dataType="numeric"
                       name="DernierPrixAchat"
                       precision="9"
                       scale="2" />
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[FournisseurCode]"
+                      refId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input].ExternalColumns[FournisseurCode]"
                       codePage="1252"
                       dataType="str"
                       length="10"
@@ -548,22 +922,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Data Flow Task\Produit STG.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Produit\Produit STG.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit STG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Produit\Produit STG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Produit STG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Produit\Produit STG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Produit STG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Produit\Produit STG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Data Flow Task\Produit STG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Produit\Produit STG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -574,15 +948,484 @@
           </components>
           <paths>
             <path
-              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
-              endId="Package\Data Flow Task\Produit STG.Inputs[OLE DB Destination Input]"
+              refId="Package\Produit.Paths[OLE DB Source Output]"
+              endId="Package\Produit\Produit STG.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
-              startId="Package\Data Flow Task\Produit SRC.Outputs[OLE DB Source Output]" />
+              startId="Package\Produit\Produit SRC.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SousFamille"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{505BF492-17E4-46A6-B5CF-988B0D8992F7}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SousFamille"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\SousFamille\SousFamille Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SousFamille Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[SousFamille]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+ISNULL([SousFamille_ID],-1) AS [SousFamille_ID],
+ISNULL([Nom], 'Undifined') AS [Nom],
+ISNULL([Code], 'Undifiend') AS Code,
+ISNULL ([Description] , 'Undifined') AS [Description],
+ISNULL([Famille_ID],-1) AS Famille_ID
+FROM [dbo].[SousFamille]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SousFamille\SousFamille Source.Connections[OleDbConnection]"
+                  connectionManagerID="{1B4947C2-1A4E-486F-887C-C1ACFDA342D4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.GestionDesProduits]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].Columns[Nom]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].ExternalColumns[Nom]"
+                      length="50"
+                      lineageId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].Columns[Nom]"
+                      name="Nom"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].Columns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      length="10"
+                      lineageId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].Columns[Code]"
+                      name="Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].Columns[Description]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      length="50"
+                      lineageId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].Columns[Description]"
+                      name="Description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].Columns[Famille_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].ExternalColumns[Famille_ID]"
+                      lineageId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].Columns[Famille_ID]"
+                      name="Famille_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].Columns[SousFamille_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].ExternalColumns[SousFamille_ID]"
+                      lineageId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].Columns[SousFamille_ID]"
+                      name="SousFamille_ID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].ExternalColumns[Nom]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Nom" />
+                    <externalMetadataColumn
+                      refId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].ExternalColumns[Famille_ID]"
+                      dataType="i4"
+                      name="Famille_ID" />
+                    <externalMetadataColumn
+                      refId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].ExternalColumns[SousFamille_ID]"
+                      dataType="i4"
+                      name="SousFamille_ID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Error Output].Columns[SousFamille_ID]"
+                      dataType="i4"
+                      lineageId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Error Output].Columns[SousFamille_ID]"
+                      name="SousFamille_ID" />
+                    <outputColumn
+                      refId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Error Output].Columns[Nom]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Error Output].Columns[Nom]"
+                      name="Nom" />
+                    <outputColumn
+                      refId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      name="Code" />
+                    <outputColumn
+                      refId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      name="Description" />
+                    <outputColumn
+                      refId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Error Output].Columns[Famille_ID]"
+                      dataType="i4"
+                      lineageId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Error Output].Columns[Famille_ID]"
+                      name="Famille_ID" />
+                    <outputColumn
+                      refId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\SousFamille\SousFamille STG"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="SousFamille STG"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[SousFamille_SA]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\SousFamille\SousFamille STG.Connections[OleDbConnection]"
+                  connectionManagerID="{9B12F089-9160-4768-88CC-35518E962447}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.SA_Ventes]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\SousFamille\SousFamille STG.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\SousFamille\SousFamille STG.Inputs[OLE DB Destination Input].Columns[SousFamille_ID]"
+                      cachedDataType="i4"
+                      cachedName="SousFamille_ID"
+                      externalMetadataColumnId="Package\SousFamille\SousFamille STG.Inputs[OLE DB Destination Input].ExternalColumns[SousFamille_ID]"
+                      lineageId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].Columns[SousFamille_ID]" />
+                    <inputColumn
+                      refId="Package\SousFamille\SousFamille STG.Inputs[OLE DB Destination Input].Columns[Nom]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Nom"
+                      externalMetadataColumnId="Package\SousFamille\SousFamille STG.Inputs[OLE DB Destination Input].ExternalColumns[Nom]"
+                      lineageId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].Columns[Nom]" />
+                    <inputColumn
+                      refId="Package\SousFamille\SousFamille STG.Inputs[OLE DB Destination Input].Columns[Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Code"
+                      externalMetadataColumnId="Package\SousFamille\SousFamille STG.Inputs[OLE DB Destination Input].ExternalColumns[Code]"
+                      lineageId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].Columns[Code]" />
+                    <inputColumn
+                      refId="Package\SousFamille\SousFamille STG.Inputs[OLE DB Destination Input].Columns[Description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Description"
+                      externalMetadataColumnId="Package\SousFamille\SousFamille STG.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      lineageId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].Columns[Description]" />
+                    <inputColumn
+                      refId="Package\SousFamille\SousFamille STG.Inputs[OLE DB Destination Input].Columns[Famille_ID]"
+                      cachedDataType="i4"
+                      cachedName="Famille_ID"
+                      externalMetadataColumnId="Package\SousFamille\SousFamille STG.Inputs[OLE DB Destination Input].ExternalColumns[Famille_ID]"
+                      lineageId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output].Columns[Famille_ID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\SousFamille\SousFamille STG.Inputs[OLE DB Destination Input].ExternalColumns[SousFamille_ID]"
+                      dataType="i4"
+                      name="SousFamille_ID" />
+                    <externalMetadataColumn
+                      refId="Package\SousFamille\SousFamille STG.Inputs[OLE DB Destination Input].ExternalColumns[Nom]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Nom" />
+                    <externalMetadataColumn
+                      refId="Package\SousFamille\SousFamille STG.Inputs[OLE DB Destination Input].ExternalColumns[Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\SousFamille\SousFamille STG.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\SousFamille\SousFamille STG.Inputs[OLE DB Destination Input].ExternalColumns[Famille_ID]"
+                      dataType="i4"
+                      name="Famille_ID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\SousFamille\SousFamille STG.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\SousFamille\SousFamille STG.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\SousFamille\SousFamille STG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\SousFamille\SousFamille STG.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\SousFamille\SousFamille STG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\SousFamille\SousFamille STG.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\SousFamille.Paths[OLE DB Source Output]"
+              endId="Package\SousFamille\SousFamille STG.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\SousFamille\SousFamille Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate Famille STG"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{67D0264D-40CD-4975-AA2B-08CE98438E70}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate Famille STG"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9B12F089-9160-4768-88CC-35518E962447}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE STG.Familles_SA" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate produit STG"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{ebcdb42d-f989-4ef9-8823-c470323f03b8}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate produit STG"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9B12F089-9160-4768-88CC-35518E962447}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE STG.Produit_SA" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate SousFamille STG"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{b4fef048-53c2-46fb-ab9c-31a636cdccd1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate SousFamille STG"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9B12F089-9160-4768-88CC-35518E962447}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE STG.SousFamille_SA" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{CD6BA655-3C64-4311-9034-AB1BE0042865}"
+      DTS:From="Package\Truncate produit STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Produit" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{69022026-AC04-494F-9A3E-D3DCA1580D19}"
+      DTS:From="Package\Truncate Famille STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Famille" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{8FAEDC55-0DE4-4BE6-BDDE-893E4B11C9B5}"
+      DTS:From="Package\Truncate SousFamille STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SousFamille" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -594,53 +1437,163 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="152,42.6666666666667"
-          Id="Package\Data Flow Task"
-          TopLeft="5.5,5.5" />
-      </GraphLayout>
-    </LayoutInfo>
-  </Package>
-  <TaskHost
-    design-time-name="Package\Data Flow Task">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+          Size="113.333333333334,42.6666666666667"
+          Id="Package\Famille"
+          TopLeft="259.84373838408,165.26249211967" />
         <NodeLayout
-          Size="136,42.6666666666667"
-          Id="Package\Data Flow Task\Produit STG"
-          TopLeft="327.42856167044,176.285709031991" />
+          Size="113.333333333334,42.6666666666667"
+          Id="Package\Produit"
+          TopLeft="27.9999989941717,165.724992359877" />
         <NodeLayout
-          Size="136,42.6666666666667"
-          Id="Package\Data Flow Task\Produit SRC"
-          TopLeft="89.1428544861931,77.4285691210202" />
+          Size="135.333333333334,42.6666666666667"
+          Id="Package\SousFamille"
+          TopLeft="478.593728605192,162.012492274642" />
+        <NodeLayout
+          Size="180,42.6666666666667"
+          Id="Package\Truncate Famille STG"
+          TopLeft="221.406240102369,47.6124977296592" />
+        <NodeLayout
+          Size="181.333333333334,42.6666666666667"
+          Id="Package\Truncate produit STG"
+          TopLeft="5.31249976251277,42.8666695181524" />
+        <NodeLayout
+          Size="202.666666666667,42.6666666666667"
+          Id="Package\Truncate SousFamille STG"
+          TopLeft="464.374979240821,48.8458407952383" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="157.142854486193,120.095235787687">
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="95.9791664291794,85.5333361848191">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="238.285707184247,56.1904732443039"
+              EndConnector="-11.3125007683411,80.1916561750578"
               Start="0,0"
-              End="238.285707184247,48.6904732443039">
+              End="-11.3125007683411,72.6916561750578">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.095236622152" />
+                    End="0,36.0958280875289" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,24.095236622152"
-                    Point2="0,28.095236622152"
-                    Point3="4,28.095236622152" />
+                    Point1="0,36.0958280875289"
+                    Point2="0,40.0958280875289"
+                    Point3="-4,40.0958280875289" />
                   <mssgle:LineSegment
-                    End="234.285707184247,28.095236622152" />
+                    End="-7.31250076834108,40.0958280875289" />
                   <mssgle:CubicBezierSegment
-                    Point1="234.285707184247,28.095236622152"
-                    Point2="238.285707184247,28.095236622152"
-                    Point3="238.285707184247,32.095236622152" />
+                    Point1="-7.31250076834108,40.0958280875289"
+                    Point2="-11.3125007683411,40.0958280875289"
+                    Point3="-11.3125007683411,44.0958280875289" />
                   <mssgle:LineSegment
-                    End="238.285707184247,48.6904732443039" />
+                    End="-11.3125007683411,72.6916561750578" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="313.958322576558,90.2791643963259">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74.983327723344"
+              Start="0,0"
+              End="0,67.483327723344">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.483327723344" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="565.708312574154,91.512507461905">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-19.4479173022947,70.499984812737"
+              Start="0,0"
+              End="-19.4479173022947,62.999984812737">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.2499924063685" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.2499924063685"
+                    Point2="0,35.2499924063685"
+                    Point3="-4,35.2499924063685" />
+                  <mssgle:LineSegment
+                    End="-15.4479173022947,35.2499924063685" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-15.4479173022947,35.2499924063685"
+                    Point2="-19.4479173022947,35.2499924063685"
+                    Point3="-19.4479173022947,39.2499924063685" />
+                  <mssgle:LineSegment
+                    End="-19.4479173022947,62.999984812737" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Famille">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="148,42.6666666666667"
+          Id="Package\Famille\Famille Source"
+          TopLeft="59.3333315650623,95.9999971389771" />
+        <NodeLayout
+          Size="136,42.6666666666667"
+          Id="Package\Famille\Famille STG"
+          TopLeft="322.333323727052,195.333327511947" />
+        <EdgeLayout
+          Id="Package\Famille.Paths[OLE DB Source Output]"
+          TopLeft="133.333331565062,138.666663805644">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="256.999992161989,56.6666637063028"
+              Start="0,0"
+              End="256.999992161989,49.1666637063028">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.3333318531514" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.3333318531514"
+                    Point2="0,28.3333318531514"
+                    Point3="4,28.3333318531514" />
+                  <mssgle:LineSegment
+                    End="252.999992161989,28.3333318531514" />
+                  <mssgle:CubicBezierSegment
+                    Point1="252.999992161989,28.3333318531514"
+                    Point2="256.999992161989,28.3333318531514"
+                    Point3="256.999992161989,32.3333318531514" />
+                  <mssgle:LineSegment
+                    End="256.999992161989,49.1666637063028" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -653,7 +1606,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Produit STG">
+    design-time-name="Package\Famille\Famille Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -666,7 +1619,159 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Produit SRC">
+    design-time-name="Package\Famille\Famille STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Produit">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="136,42.6666666666667"
+          Id="Package\Produit\Produit STG"
+          TopLeft="327.42856167044,176.285709031991" />
+        <NodeLayout
+          Size="136,42.6666666666667"
+          Id="Package\Produit\Produit SRC"
+          TopLeft="89.1428544861931,77.4285691210202" />
+        <EdgeLayout
+          Id="Package\Produit.Paths[OLE DB Source Output]"
+          TopLeft="157.142854486193,120.095235787687">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="238.285707184247,56.1904732443041"
+              Start="0,0"
+              End="238.285707184247,48.6904732443041">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.0952366221521" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.0952366221521"
+                    Point2="0,28.0952366221521"
+                    Point3="4,28.0952366221521" />
+                  <mssgle:LineSegment
+                    End="234.285707184247,28.0952366221521" />
+                  <mssgle:CubicBezierSegment
+                    Point1="234.285707184247,28.0952366221521"
+                    Point2="238.285707184247,28.0952366221521"
+                    Point3="238.285707184247,32.0952366221521" />
+                  <mssgle:LineSegment
+                    End="238.285707184247,48.6904732443041" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Produit\Produit SRC">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Produit\Produit STG">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\SousFamille">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\SousFamille\SousFamille STG"
+          TopLeft="347.666656305393,205.333327213923" />
+        <NodeLayout
+          Size="180.666666666667,42.6666666666667"
+          Id="Package\SousFamille\SousFamille Source"
+          TopLeft="101.999996960163,93.6666638751826" />
+        <EdgeLayout
+          Id="Package\SousFamille.Paths[OLE DB Source Output]"
+          TopLeft="192.333330293497,136.333330541849">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="233.999992678563,68.9999966720741"
+              Start="0,0"
+              End="233.999992678563,61.4999966720741">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.4999983360371" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.4999983360371"
+                    Point2="0,34.4999983360371"
+                    Point3="4,34.4999983360371" />
+                  <mssgle:LineSegment
+                    End="229.999992678563,34.4999983360371" />
+                  <mssgle:CubicBezierSegment
+                    Point1="229.999992678563,34.4999983360371"
+                    Point2="233.999992678563,34.4999983360371"
+                    Point3="233.999992678563,38.4999983360371" />
+                  <mssgle:LineSegment
+                    End="233.999992678563,61.4999966720741" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\SousFamille\SousFamille Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\SousFamille\SousFamille STG">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
